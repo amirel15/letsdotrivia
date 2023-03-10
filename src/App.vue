@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <main>
@@ -8,6 +6,7 @@
       <RouterView />
     </div>
   </main>
+  <p class="score">Score: 100</p>
 </template>
 
 <style lang="postcss" scoped>
@@ -17,4 +16,8 @@
       @apply flex h-5/6 min-h-fit w-11/12 flex-col items-center gap-16 overflow-auto rounded-lg bg-gray-100 p-8 shadow-lg;
     }
   }
+
+  .score {
+  @apply absolute bottom-6 right-8 text-2xl font-bold uppercase text-slate-200;
+}
 </style>
