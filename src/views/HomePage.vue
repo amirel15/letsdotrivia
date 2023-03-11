@@ -1,40 +1,32 @@
 <script setup>
-  import { onMounted, ref } from 'vue'
-  import useApi from '@/composables/useApi'
-  const api = useApi()
-  const categories = ref([])
-  onMounted(async () => {
-    categories.value = await api.getCategories()
-  })
+import { onMounted, ref } from 'vue'
+import useApi from '@/composables/useApi'
+import BaseTitle from "@/components/BaseTitle.vue"
+
+const api = useApi();
+const categories = ref([]);
+
+onMounted(async () => {
+  categories.value = await api.getCategories();
+});
 </script>
 
 <template>
-  <div class="brand">
-    <img class="logo" src="logo.svg" alt="logo" />
-    <h1 class="title">Let's Do Trivia</h1>
-    <img class="logo" src="logo.svg" alt="logo" />
-  </div>
+  <!-- -->
+  <BaseTitle>
+    <template #logo>
+      <img src="logo.svg" alt="logo"/>
+    </template>
+    Let's Do Trivia
+  </BaseTitle>
   <div class="categories">
     <RouterLink v-for="category in categories"
       :key="category.id"
       :to="`/question/category/${category.id}`"
-      class="category"
-      >
-      {{ category.name }}
-    </RouterLink>
-  </div>
+      class="category">
 </template>
 
 <style lang="postcss" scoped>
-.brand {
-  @apply flex items-center justify-center gap-4;
-  & .logo {
-    @apply h-12 w-12;
-  }
-  & .title {
-    @apply text-5xl font-semibold uppercase tracking-widest text-indigo-900;
-  }
-}
 .categories {
   @apply grid flex-grow grid-cols-4 gap-12;
   & .category {
