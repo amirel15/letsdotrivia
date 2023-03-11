@@ -1,14 +1,13 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted} from 'vue'
 import useApi from '@/composables/useApi'
 import BaseTitle from "@/components/BaseTitle.vue"
 
-const api = useApi();
-const categories = ref([]);
+const { categories, getCategories } = useApi()
 
 onMounted(async () => {
-  categories.value = await api.getCategories();
-});
+  await getCategories()
+  });
 </script>
 
 <template>
@@ -19,7 +18,7 @@ onMounted(async () => {
     </template>
     Let's Do Trivia
   </BaseTitle>
-  <div class="categories">
+  <div v-if="categories.length > 0" class="categories">
     <RouterLink v-for="category in categories"
       :key="category.id"
       :to="`/question/category/${category.id}`"
