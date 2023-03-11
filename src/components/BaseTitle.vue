@@ -15,7 +15,7 @@
     @apply h-12 w-12;
   }
   & .title {
-    @apply text-5xl font-semibold uppercase tracking-widest text-indigo-900;
+    @apply text-5xl text-center font-semibold uppercase tracking-widest text-indigo-900;
   }
 }
 </style>
