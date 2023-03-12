@@ -4,7 +4,7 @@ const { score } = useScore()
 </script>
 
 <template>
-      <p class="score">{{score}}</p>
+      <p class="score">Score: {{score}}</p>
 </template>
 
 <style lang="postcss" scoped>
