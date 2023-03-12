@@ -59,7 +59,6 @@ onMounted(async () => {
         :class="colors.getColor(answer.id)" class="answer"
         @click="handleAnswer(answer.points)" v-html="answer.answer" />
         {{ answer.answer }}
-      </div>
     </div>
     <DifficultyChip :difficulty="question.difficulty"/>
   </div>
