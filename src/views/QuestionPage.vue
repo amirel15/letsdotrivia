@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { shuffle } from 'lodash-es'
 import NotificationAnswers from '@/components/NotificationAnswers.vue'
 
-import useAPI from '@/composables/useApi'
+import useApi from '@/composables/useApi'
 import useColor from '@/composables/useColor'
 import useScore from '@/composables/useScore'
 import BaseTitle from '@/components/BaseTitle.vue'
@@ -45,7 +45,7 @@ onMounted(async () => {
       points: -5,
     })
   })
-  answers.value = shuffle(answer.value)
+  answers.value = shuffle(answers.value)
 })
 </script>
 
@@ -57,9 +57,7 @@ onMounted(async () => {
       <div v-for="answer in answers"
         :key="answer.id"
         :class="colors.getColor(answer.id)" class="answer"
-        @click="handleAnswer(answer.points)" v-html="answer.answer" />
-        {{ answer.answer }}
-    </div>
+        @click="handleAnswer(answer.points)" v-html="answer.answer" />    </div>
     <DifficultyChip :difficulty="question.difficulty"/>
   </div>
   <div v-else class="loading">Loading....</div>
